@@ -1,0 +1,4 @@
+fastapi
+uvicorn[standard]
+asyncpg sqlalchemy databases
+passlib[bcrypt]
