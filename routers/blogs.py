@@ -5,16 +5,16 @@ from database import SessionLocal, get_db
 import models
 from outh2 import get_current_user
 from repositories.blog import BlogRepository
-from schemas import Blog, ShowBlog, User
+from schema import Blog, ShowBlog, User
 
 router = APIRouter(
     tags=['Blogs'],
     prefix="/blog",
     # dependencies=[Depends()]
 )
-
+# use_api_2
 @router.get("/all",status_code=200, response_model=List[ShowBlog])
-async def get_blog(get_current_user: User = Depends(get_current_user), db: SessionLocal = Depends(get_db)):
+async def get_blog(get_current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     return BlogRepository.get_all_blog(db)
 
 @router.post("/create", status_code=201)

@@ -1,9 +1,11 @@
 import models
-from fastapi import HTTPException, status
+from fastapi import HTTPException, Response, status
+import requests
 
-
+response = Response
 class BlogRepository():
     def create_blog_post(db, request):
+        # how to use 
         blog = models.Blog(title=request.title, body=request.body, user_id=request.user_id)
         db.add(blog)
         db.commit()
@@ -22,16 +24,16 @@ class BlogRepository():
             # return {"message": "No record found!"}
         return blog
     
-    def delete_blog(db, id: int, response):
+    def delete_blog(db, id: int):
         blog = db.query(models.Blog).filter(models.Blog.id == id).first()
         if not blog:
             response.status_code = status.HTTP_404_NOT_FOUND
-            return {"message": "No record found!"}
+            return "No record found!"
         db.delete(blog)
         db.commit()
         return "Blog deleted successfully"
     
-    def update_blog(db, id: int, request, response):
+    def update_blog(db, id: int, request):
         blog =   db.query(models.Blog).filter(models.Blog.id == id)
         if not blog.first():
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Blog not found")
@@ -39,4 +41,4 @@ class BlogRepository():
             blog.update({models.Blog.title:request.title, models.Blog.body: request.body})
             db.commit()
             response.status_code = status.HTTP_202_ACCEPTED
-            return {"msg": "Updated successfully"}
+            return "Updated successfully"

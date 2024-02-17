@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 
 from JWTtoken import ALGORITHM, SECRET_KEY
-from schemas import TokenData
+from schema import TokenData
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 

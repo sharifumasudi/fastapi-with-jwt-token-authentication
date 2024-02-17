@@ -6,7 +6,7 @@ from JWTtoken import ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token
 from database import get_db
 from hashing import Hash
 import models
-from schemas import Login, Token
+from schema import Login, Token
 
 router = APIRouter(
     prefix="/login",

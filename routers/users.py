@@ -5,7 +5,7 @@ from typing import List
 from hashing import Hash
 import models
 from repositories.user import UserRepository
-from schemas import GetUser, User
+from schema import GetUser, User
 
 router = APIRouter(
     tags=["Users"],
