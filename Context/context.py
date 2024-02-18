@@ -9,3 +9,6 @@ async def get_context(request: Request, db: Session = Depends(get_db)):
     return {
         'db': db,
     }
+
+async def is_authenticated(db: Session = Depends(get_db), current_user: User=Depends(get_current_user)):
+    ...

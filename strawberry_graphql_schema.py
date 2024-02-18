@@ -12,6 +12,11 @@ class UserType:
 class UsersType():
     username: str
 
+@strawberry.input  
+class UserTypeInput():
+    username: str
+    password: str
+
 @strawberry.type
 class GetUserType:
     username: str

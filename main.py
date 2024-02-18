@@ -8,7 +8,7 @@ import strawberry
 from strawberry.asgi import GraphQL
 from routers import blogs, login, users
 from strawberry_graphql_schema import UserType, GetUserType, BlogType, ShowBlogType, StudentType, LoginType, TokenType, TokenDataType
-from graphql_context.context import get_context
+from Context.context import get_context
 from Query.query import Query
 
 app = FastAPI()
